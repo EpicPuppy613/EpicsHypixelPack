@@ -1,6 +1,14 @@
 name: publish-resource-pack
 on: [push]
 jobs:
+  zip-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: papeloto/action-zip@v1
+        with:
+          files: §9Epic's Hypixel Pack
+          dest: §9Epic's Hypixel Pack.zip
   release:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +29,8 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./
-        asset_name: §9Epic's Hypixel Pack
+        asset_name: §9Epic's Hypixel Pack.zip
+        asset_content_type: application/zip
 
     - uses: eregon/publish-release@v1
       env:
