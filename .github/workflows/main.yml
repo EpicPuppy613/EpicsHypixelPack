@@ -4,14 +4,19 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+    - uses: papeloto/action-zip@v1
+      with:
+        files: §9Epic's Hypixel Pack
+        dest: §9Epic's Hypixel Pack.zip
     - name: Create Draft Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: <tofill>
-        release_name: <tofill>
+        tag_name: v0.2.0
+        release_name: v0.2.0
         draft: true
         prerelease: false
 
@@ -20,8 +25,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./my-artifact.zip
-        asset_name: my-artifact.zip
+        asset_path: ./§9Epic's Hypixel Pack.zip
+        asset_name: §9Epic's Hypixel Pack.zip
         asset_content_type: application/zip
 
     - uses: eregon/publish-release@v1
