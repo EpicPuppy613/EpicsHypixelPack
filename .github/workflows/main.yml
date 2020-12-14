@@ -5,11 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Zip Release File
-      - uses: actions/checkout@v2
-      - uses: papeloto/action-zip@v1
-        with:
-          files: §9Epic's Hypixel Pack
-          dest: §9Epic's Hypixel Pack.zip
+        - uses: actions/checkout@v2
+        - uses: papeloto/action-zip@v1
+          with:
+            files: §9Epic's Hypixel Pack
+            dest: §9Epic's Hypixel Pack.zip
       - name: Create Draft Release
         id: create_release
         uses: actions/create-release@v1
