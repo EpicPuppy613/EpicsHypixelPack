@@ -7,7 +7,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: papeloto/action-zip@v1
       with:
-        files: §9Epic's Hypixel Pack
+        files: §9Epic's Hypixel Pack.zip
         dest: §9Epic's Hypixel Pack.zip
     - name: Create Draft Release
       id: create_release
