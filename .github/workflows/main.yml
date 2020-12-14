@@ -4,36 +4,38 @@ jobs:
   zip-files:
     runs-on: ubuntu-latest
     steps:
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Zip Release File
       - uses: actions/checkout@v2
       - uses: papeloto/action-zip@v1
         with:
           files: §9Epic's Hypixel Pack
           dest: §9Epic's Hypixel Pack.zip
-  release:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Create Draft Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v*
-        release_name: v0.2
-        draft: true
-        prerelease: false
+      - name: Create Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v*
+          release_name: v0.2
+          draft: true
+          prerelease: false
 
-    - uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./
-        asset_name: §9Epic's Hypixel Pack.zip
-        asset_content_type: application/zip
+      - uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./
+          asset_name: §9Epic's Hypixel Pack.zip
+          asset_content_type: application/zip
 
-    - uses: eregon/publish-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        release_id: ${{ steps.create_release.outputs.id }}
+      - uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
