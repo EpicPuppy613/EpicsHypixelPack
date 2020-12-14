@@ -22,7 +22,6 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./
         asset_name: §9Epic's Hypixel Pack
-        asset_content_type: application/zip
 
     - uses: eregon/publish-release@v1
       env:
